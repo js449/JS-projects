@@ -21,14 +21,20 @@ A simple and scalable backend for an eCommerce platform built with **Node.js**, 
 jaycart-backend/
 ├── config/
 │ └── db.js # MongoDB connection logic
+
 ├── controllers/
 │ └── userController.js # Handles user registration logic
+
 ├── models/
 │ └── User.js # Mongoose schema for User
+
 ├── routes/
 │ └── userRoutes.js # API routes for users
+
 ├── .env # Environment variables (not committed)
+
 ├── index.js # Entry point of the backend app
+
 └── package.json # Project dependencies and scripts
 
 ## 🔧 Tech Stack
