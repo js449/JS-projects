@@ -18,7 +18,8 @@ A simple and scalable backend for an eCommerce platform built with **Node.js**, 
 
 ## 🗂️ Project Structure
 
-jaycart-backend/
+jaycart-backend
+
 ├── config/
 │ └── db.js # MongoDB connection logic
 
