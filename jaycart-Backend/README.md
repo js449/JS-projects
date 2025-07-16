@@ -1,114 +1,111 @@
-# 🛒 JayCart Backend API
+# JayCart Backend
 
-A simple and scalable backend for an eCommerce platform built with **Node.js**, **Express.js**, and **MongoDB**. This project is under active development.
-
----
-
-## ✅ Features Implemented So Far
-
-- User Registration (POST /api/users/register)
-- MongoDB database connection (via Mongoose)
-- API development with Express.js
-- Project structure using MVC pattern
-- Environment variable setup with dotenv
-- Modular folder structure
-- Ready to scale with additional features like login, products, cart, and payments
+This is the backend for the JayCart eCommerce project, built using Node.js, Express, and PostgreSQL with plain SQL queries. The project follows a clean layered architecture inspired by the MVC pattern to organize code for scalability and maintainability.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure & Architecture
 
-jaycart-backend
+The backend is structured into logical layers to separate concerns:
 
-├── config/
-│ └── db.js # MongoDB connection logic
-
-├── controllers/
-│ └── userController.js # Handles user registration logic
-
-├── models/
-│ └── User.js # Mongoose schema for User
-
-├── routes/
-│ └── userRoutes.js # API routes for users
-
-├── .env # Environment variables (not committed)
-
-├── index.js # Entry point of the backend app
-
-└── package.json # Project dependencies and scripts
-
-## 🔧 Tech Stack
-
-- **Node.js**
-- **Express.js**
-- **MongoDB + Mongoose**
-- **dotenv** – Securely handle environment variables
-- **CORS** – Allow frontend and backend communication
-- **Nodemon** – Live server reloading for development
+/jaycart-Backend
+├── data-access/ # Data layer: direct SQL queries here
+│ ├── db.js # PostgreSQL connection setup with pg
+│ └── repositories/ # SQL query functions for each entity
+│ ├── productRepository.js
+│ ├── userRepository.js
+│ ├── cartRepository.js
+│ └── orderRepository.js
+├── domain/ # Business logic and validation
+│ ├── productService.js
+│ ├── userService.js
+│ ├── cartService.js
+│ └── orderService.js
+├── presentation/ # API Layer (Express controllers + routes)
+│ ├── controllers/
+│ │ ├── productController.js
+│ │ ├── userController.js
+│ │ ├── cartController.js
+│ │ └── orderController.js
+│ └── routes/
+│ ├── productRoutes.js
+│ ├── userRoutes.js
+│ ├── cartRoutes.js
+│ └── orderRoutes.js
+├── middlewares/ # Middleware (auth, error handling, validation)
+│ ├── authMiddleware.js
+│ ├── errorMiddleware.js
+│ └── validateMiddleware.js
+├── utils/ # Helper functions (e.g. token generation)
+│ └── jwtHelper.js
+├── app.js # Express app setup, middleware & routes registration
+├── server.js # Server entry point
+├── .env # Environment variables (DB creds, JWT secret, Stripe keys)
+├── package.json
+└── README.md
 
 ---
 
-## 🧪 API Endpoint
+## How Layers Work Together
 
-### `POST /api/users/register`
+- **Data Access Layer**: Contains raw SQL queries to interact with the PostgreSQL database.
+- **Domain Layer**: Contains business logic, validation, and application rules.
+- **Presentation Layer**: Handles incoming HTTP requests, calls domain logic, and sends responses.
 
-Registers a new user in the database.
+This separation helps keep the codebase clean, scalable, and easy to maintain.
 
-**Request Body (JSON):**
+## Setup & Running Locally
 
-{
-"name": "John Doe",
-"email": "john@example.com",
-"password": "123456"
-}
+1. ## Clone the repository
 
-Success Response:
+   git clone <your-repo-url>
+   cd jaycart-Backend
 
-{
-"\_id": "mongodb_generated_id",
-"name": "John Doe",
-"email": "john@example.com"
-}
+2. ## Install dependencies
 
-## 🌐 How to Run Locally
+   npm install
 
-1. Clone the repository
+3. ## Create .env file
+   Add your environment variables:
 
-git clone https://github.com/yourusername/jaycart-backend.git
-cd jaycart-backend
-
-2. Install dependencies
-
-npm install
-
-3. Create a .env file
-
+DATABASE_URL=postgresql://postgres:<password>@localhost:5432/jaycart_db
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_key
 
-4. Start the server
+4. ## Start the backend server
+   node server.js
 
-npm run dev
+keep track of logs indicating connection to PostgreSQL and server running on specified port on console.
 
-You should see:
-Server running on port 5000
-MongoDB Connected: ✅
+## API Endpoints Implemented So Far
 
-📦 Coming Soon
+POST /api/products — Create a new product
 
-🔐 Login & JWT Authentication
-🔑 Password Hashing with Bcrypt
-🛍️ Product and Cart APIs
-💳 Payment Integration
-🌍 Frontend (React) Integration
+(Add other endpoints as you implement)
 
-📁 License
-This project is licensed under the MIT License.
+## Notes
 
-🤝 Contributions
-Pull requests are welcome. Please keep the code clean and modular.
+I'm currently using plain SQL queries with the pg library instead of ORM for greater control and simplicity.
 
-👨‍💻 Author
-Developed by Jay Singh
-(Backend Developer – 2025 Roadmap)
+Database schema is managed manually; migration scripts coming soon.
+
+The backend follows a layered architecture inspired by MVC for clarity and maintainability.
+
+## Next Steps
+
+Complete full CRUD for products
+
+Add input validation
+
+Implement user authentication with JWT
+
+Build shopping cart and order management
+
+Integrate Stripe payments
+
+Improve error handling and write tests
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or pull requests.

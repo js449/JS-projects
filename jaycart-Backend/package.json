@@ -1,22 +1,18 @@
 {
-  "name": "jaycart",
+  "name": "root",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "/jaycart-backend\r ├─ /data-access # Repositories that handle DB operations\r │ ├─ productRepository.js\r │ └─ userRepository.js\r ├─ /domain # Business logic and rules\r │ ├─ productService.js\r │ └─ cartService.js\r ├─ /presentation # API: Controllers and routes\r │ ├─ controllers\r │ │ └─ productController.js\r │ └─ routes.js\r ├─ /models # Mongoose schemas (if using MongoDB)\r │ └─ productModel.js\r ├─ server.js # App entry point\r └─ package.json",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
-    "mongoose": "^8.16.3"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
+    "pg": "^8.16.3"
   }
 }
