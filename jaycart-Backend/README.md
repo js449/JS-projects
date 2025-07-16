@@ -9,6 +9,7 @@ This is the backend for the JayCart eCommerce project, built using Node.js, Expr
 The backend is structured into logical layers to separate concerns:
 
 /jaycart-Backend
+
 ├── data-access/ # Data layer: direct SQL queries here
 │ ├── db.js # PostgreSQL connection setup with pg
 │ └── repositories/ # SQL query functions for each entity
