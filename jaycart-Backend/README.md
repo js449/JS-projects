@@ -17,11 +17,13 @@ The backend is structured into logical layers to separate concerns:
 │ ├── userRepository.js
 │ ├── cartRepository.js
 │ └── orderRepository.js
+
 ├── domain/ # Business logic and validation
 │ ├── productService.js
 │ ├── userService.js
 │ ├── cartService.js
 │ └── orderService.js
+
 ├── presentation/ # API Layer (Express controllers + routes)
 │ ├── controllers/
 │ │ ├── productController.js
@@ -33,16 +35,23 @@ The backend is structured into logical layers to separate concerns:
 │ ├── userRoutes.js
 │ ├── cartRoutes.js
 │ └── orderRoutes.js
+
 ├── middlewares/ # Middleware (auth, error handling, validation)
 │ ├── authMiddleware.js
 │ ├── errorMiddleware.js
 │ └── validateMiddleware.js
+
 ├── utils/ # Helper functions (e.g. token generation)
 │ └── jwtHelper.js
+
 ├── app.js # Express app setup, middleware & routes registration
+
 ├── server.js # Server entry point
+
 ├── .env # Environment variables (DB creds, JWT secret, Stripe keys)
+
 ├── package.json
+
 └── README.md
 
 ---
