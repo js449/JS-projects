@@ -124,6 +124,38 @@ Integrate Stripe payments
 
 Improve error handling and write tests
 
-## Contributing
+## (July 18, 2025)
 
-Contributions are welcome! Feel free to open issues or pull requests.
+Finalized and fixed unit/integration tests for User and Product APIs:
+
+Implemented JWT-based authentication in tests
+
+Fixed test expectations to match actual API responses
+
+Properly handled DB teardown to avoid hanging tests
+
+Adjusted DELETE product route test to expect HTTP 204 (No Content) status
+
+Prepared the backend architecture for Cart and Order features by:
+
+Adding new layers and files: cartRepository.js, orderRepository.js, cartService.js, orderService.js, cartController.js, orderController.js, cartRoutes.js, and orderRoutes.js
+
+Defined necessary database tables and relationships for cart and order management
+
+Planned RESTful API endpoints for cart management (add/update/remove items, get cart)
+
+Planned RESTful API endpoints for orders (place order, list user orders, admin order management)
+
+Established best practices for layered architecture, validation, and authentication
+
+## Next Steps
+
+Implement Cart and Order features:
+
+Develop repository, service, controller, and route layers for cart and order
+
+Write comprehensive tests for new features
+
+Ensure secure access with proper authentication and authorization
+
+Expand features as needed (payment integration, roles, product categories)
