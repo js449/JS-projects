@@ -1,18 +1,35 @@
 {
   "name": "root",
   "version": "1.0.0",
-  "description": "/jaycart-backend\r ├─ /data-access # Repositories that handle DB operations\r │ ├─ productRepository.js\r │ └─ userRepository.js\r ├─ /domain # Business logic and rules\r │ ├─ productService.js\r │ └─ cartService.js\r ├─ /presentation # API: Controllers and routes\r │ ├─ controllers\r │ │ └─ productController.js\r │ └─ routes.js\r ├─ /models # Mongoose schemas (if using MongoDB)\r │ └─ productModel.js\r ├─ server.js # App entry point\r └─ package.json",
+  "description": "/jaycart-backend ...",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "jest",
+    "start": "node -r module-alias/register server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
     "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "jest": "^30.0.4",
+    "supertest": "^7.1.3"
+  },
+  "_moduleAliases": {
+    "@middlewares": "middlewares",
+    "@controllers": "presentation/controllers",
+    "@routes": "presentation/routes",
+    "@services": "domain",
+    "@data-access": "data-access"
+  },
+    "testEnvironment": "node"
   }
-}
+

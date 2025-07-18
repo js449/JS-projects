@@ -43,6 +43,7 @@ The backend is structured into logical layers to separate concerns:
 
 ├── utils/ # Helper functions (e.g. token generation)
 │ └── jwtHelper.js
+| └── hash.js
 
 ├── app.js # Express app setup, middleware & routes registration
 
@@ -51,6 +52,13 @@ The backend is structured into logical layers to separate concerns:
 ├── .env # Environment variables (DB creds, JWT secret, Stripe keys)
 
 ├── package.json
+|
+|-- tests/
+| └── user.test.js
+| └── product.test.js
+|
+|--jest.config.js
+|--jsconfig.json
 
 └── README.md
 

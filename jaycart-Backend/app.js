@@ -1,19 +1,22 @@
 // app.js
-const express = require("express");
-const app = express();
+require("dotenv").config(); // Load environment variables from .env file
+const express = require("express"); // Import the express module to create an Express application
+const app = express(); // Create an instance of the Express application
 
-app.use(express.json());
+app.use(express.json()); // Middleware to parse JSON request bodies
 
 // Import routes
 const productRoutes = require("./presentation/routes/productRoutes");
+const userRoutes = require("./presentation/routes/userRoutes"); // Import user routes
+
+// Import custom error handler middleware
+const errorHandler = require("./middlewares/errorMiddleware");
 
 // Use routes
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes); // Register user routes
 
-// Basic error handler middleware (optional)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: "Something went wrong!" });
-});
+// Global error handler middleware
+app.use(errorHandler);
 
 module.exports = app;
